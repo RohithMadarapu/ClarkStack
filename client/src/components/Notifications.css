@@ -1,0 +1,26 @@
+/* Notifications.css */
+
+.notifications-container {
+    padding-left: 15px;
+    padding-top: 25px;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.notify-header {
+    font-weight: bold;
+}
+
+.notify-input {
+    width: 17px;
+    height: 17px;
+}
+
+.first-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}

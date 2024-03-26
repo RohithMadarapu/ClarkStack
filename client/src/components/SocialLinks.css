@@ -1,0 +1,16 @@
+.sociallinks-container {
+    padding-left: 15px;
+    padding-top: 25px;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.links-text {
+    margin-top: 10px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}

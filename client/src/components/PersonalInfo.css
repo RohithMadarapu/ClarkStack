@@ -1,0 +1,44 @@
+.personal-info-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.personal-info-left {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.personal-info-right {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.personalInfoLabel {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.in,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type='submit'] {
+    background-color: #0074d9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type='submit']:hover {
+    background-color: #0056b3;
+}

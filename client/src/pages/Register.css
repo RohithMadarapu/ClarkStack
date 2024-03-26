@@ -1,0 +1,115 @@
+.register {
+    height: 200px;
+    width: 60%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.container {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10px;
+    background: #fff;
+    padding-bottom: 30px;
+    width: 90%;
+}
+
+.header1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 9px;
+    width: 100%;
+}
+
+.text {
+    color: #3c009d;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.inputs {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 60%;
+    /* This will make the input take 100% of its parent's width */
+    min-width: 100px;
+    height: 60px;
+    background: #eaeaea;
+    border-radius: 6px;
+}
+
+
+.label {
+    margin: 0px 30px;
+}
+
+.input input {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    /* Use a percentage for responsiveness */
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #797979;
+    font-size: 15px;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.icons {
+    padding-left: 7px;
+    padding-right: 3px;
+}
+
+.button-container button {
+    border: none;
+    width: 110px;
+    height: 40px;
+    color: #fff;
+    background: #4c00b4;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-page-redirecting {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.register_background {
+    height: 100vh;
+    width: 100%;
+    background-image: url(https://pbs.twimg.com/media/DQyGb9dUEAAcd-s?format=jpg&name=large);
+    background-size: cover;
+    background-position: center;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 70%;
+    }
+}

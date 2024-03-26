@@ -1,0 +1,85 @@
+/* General.css */
+
+.general-container {
+    padding-top: 15px;
+    padding-left: 15px;
+    max-width: 850px;
+    /* Set a maximum width for the container */
+    width: 100%;
+    /* Make the container take 100% width of its parent */
+    margin: 0 auto;
+    /* Center the container horizontally */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d3d3d3;
+    padding-bottom: 10px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack buttons vertically on smaller screens */
+    align-items: flex-start;
+    /* Align buttons to the start (left) of the container */
+    margin-left: 15px;
+}
+
+.picture-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid lightblue;
+    color: blue;
+    border-radius: 2px;
+    font-size: medium;
+    width: 100%;
+    /* Make buttons take full width */
+}
+
+.h5 {
+    margin-left: 15px;
+    font-weight: 300;
+    margin-top: 12px;
+}
+
+.user-data {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+h4 {
+    font-weight: 300;
+}
+
+.name-container {
+    margin-top: 25px;
+}
+
+.profile-text {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    width: 100%;
+    /* Make the input take full width */
+    border: 1px solid lightgray;
+    box-shadow: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .profile {
+        flex-direction: column;
+        row-gap: 5px;
+        align-items: center;
+    }
+}

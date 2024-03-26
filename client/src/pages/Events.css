@@ -1,0 +1,345 @@
+.eventsContainer {
+    background-image:
+        linear-gradient(rgba(0, 125, 209, 0.37) 0%, rgba(0, 173, 238, 0.21) 100%),
+        url(https://humanityrising.org/wp-content/uploads/2022/05/events3.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    width: 100%;
+    clip-path: ellipse(100% 60% at 50% 40%);
+    box-shadow: 0px 50px 20px rgba(0, 173, 238, 0.5);
+}
+
+.event-sub {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.event-info {
+
+    color: rgb(77, 77, 155);
+    font-size: 29px;
+    line-height: 1.5;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 100;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+}
+
+.events-display {
+    margin: 40px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    height: 90px;
+}
+
+.dt-m {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.no-events-message {
+    text-align: center;
+    color: #999;
+}
+
+.event-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.add-event {
+    width: 100px;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.events-border {
+    margin-left: 25px;
+    margin-left: 25px;
+    display: flex;
+    flex: 1;
+    border-bottom: 1px solid lightgray;
+}
+
+.popup-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* Ensure it's above other content */
+}
+
+.popup-form {
+    max-height: 500px;
+    /* Set a max height for the form */
+    overflow-y: scroll;
+    /* Add vertical scroll for the form */
+    margin-top: 50px;
+    width: 1000px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    /* Adjust width as needed */
+}
+
+.popup-form h4 {
+    text-align: center;
+}
+
+.popup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-form input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.popup-form textarea {
+    padding: 10px;
+    outline: none;
+}
+
+.popup-form button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-form button:hover {
+    background: #0056b3;
+}
+
+.add-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.closeIconContainer {
+    margin-left: auto;
+}
+
+.event-body {
+    border-radius: 4px;
+    padding: 30px;
+    margin-left: 38px;
+    margin-right: 38px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.events-bg-color {
+    background-color: rgb(228, 226, 226);
+}
+
+.list-events {
+    margin: 40px;
+}
+
+.inner-list {
+    padding-bottom: 20px;
+
+}
+
+.find-button {
+    padding: 15px 30px;
+    background-color: rgb(244, 80, 80);
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.find-button:hover {
+    background-color: #007bff;
+    /* Change to the desired blue color */
+    transform: scale(0.95);
+    /* Shrink the button on hover */
+}
+
+.search-input {
+    margin-right: 10px;
+    padding: 15px;
+    border-radius: 50px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.input-dropdown {
+    padding: 10px;
+    outline: none;
+}
+
+
+.filter {
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-dropdown select {
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+
+}
+
+.filter-dropdown option {
+    padding: 10px;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(244, 80, 80);
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #007bff;
+    transform: scale(0.95);
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.notification-body {
+    position: absolute;
+    top: 770px;
+    right: 38px;
+    width: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #d8d6d6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-content {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeIcon {
+    color: red;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.display-body {
+    padding: 10px;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #f7f7f7;
+}
+
+.display-body div {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.display-body:last-child {
+    border-bottom: none;
+}
+
+.display1 {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .notification-body {
+        width: 100%;
+        right: 0;
+    }
+
+    .display-body {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .event-nav {
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
+        height: auto;
+        /* Auto height for smaller screens */
+        padding: 5px;
+        /* Adjust padding for better spacing on smaller screens */
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .events-display {
+        height: auto;
+    }
+
+    .filter {
+        margin: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,61 @@
+.account-Settings {
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+.profile-conatiner {
+    border: 0.5px solid lightgray;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.components-data {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.component {
+    padding: 20px;
+    border-bottom: 0.5px solid lightgray;
+}
+
+.component:hover {
+    background-color: lightgray;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notify-component {
+    padding: 20px;
+}
+
+.notify-component:hover {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+.component-data {
+    flex: 1;
+    width: 100%;
+}
+
+.saveChanges-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: blue;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    max-width: 300px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

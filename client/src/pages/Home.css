@@ -1,0 +1,77 @@
+.header {
+    background-image: url('https://humanityrising.org/wp-content/uploads/2022/05/events3.jpg');
+    color: #fff;
+    text-align: center;
+    padding: 2em;
+    height: 415px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.header-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 18px;
+    border-radius: 8px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.header-content h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header h1,
+.header p,
+.header-content p {
+    margin: 0;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.event-highlights {
+    margin-top: 1em;
+}
+
+.event-highlights p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+}
+
+.contact-section {
+    background-color: #ecf0f1;
+    padding: 64px;
+    text-align: center;
+
+}
+
+.c-h2 {
+    padding-bottom: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.c-p {
+    padding-top: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 32px;
+}
