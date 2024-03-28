@@ -1,0 +1,59 @@
+version: '3.1'
+
+services: 
+  client:
+    build: 
+      context: ./client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    restart: always
+    networks:
+      - EStack  
+
+  server:
+    build: 
+      context: ./server
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://admin:admin@mongo:27017/
+      - ACCESS_TOKEN=karthik123
+    depends_on:
+      - mongo
+    restart: always  
+    networks:
+      - EStack
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - EStack
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongo:27017/
+    networks:
+      - EStack
+
+networks:
+  EStack:
+    driver: bridge
+
+volumes:
+  mongo_data:
