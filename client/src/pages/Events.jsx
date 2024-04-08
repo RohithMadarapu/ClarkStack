@@ -11,7 +11,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import io from 'socket.io-client';
 import NotificationBadge from 'react-notification-badge';
 import { Effect } from 'react-notification-badge';
-const socket = io.connect("http://localhost:8000");
+const backendURL=import.meta.env.VITE_backend_url;
+const socket = io.connect(backendURL);
 
 function Events() {
     const user = useSelector(selectUser);
@@ -56,7 +57,7 @@ function Events() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/allEvents');
+                const response = await axios.get('/allEvents');
                 const currentDate = new Date();
                 const validEvents = response.data.filter((event) => new Date(event.date + 'T' + event.time) > currentDate);
 
@@ -77,7 +78,7 @@ function Events() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:8000/events', eventDetails);
+            const response = await axios.post('/events', eventDetails);
             const createdEvent = response.data;
             socket.emit('new_event', createdEvent);
             setEventDetails({
@@ -112,7 +113,7 @@ function Events() {
     useEffect(() => {
         socket.on('new_event', async (newEvent) => {
             try {
-                const updatedEventsResponse = await axios.get('http://localhost:8000/allEvents');
+                const updatedEventsResponse = await axios.get('/allEvents');
                 const currentDate = new Date();
                 const validEvents = updatedEventsResponse.data.filter((event) => new Date(event.date + 'T' + event.time) > currentDate);
 

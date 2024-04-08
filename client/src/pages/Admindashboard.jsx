@@ -73,7 +73,7 @@ function Admindashboard() {
             setSelectedEvent(event);
             setShowParticipants(true);
             try {
-                const response = await axios.get(`http://localhost:8000/participants/${event._id}`);
+                const response = await axios.get(`/participants/${event._id}`);
                 setParticipants(response.data);
             } catch (error) {
                 console.error('Error fetching participants:', error);
@@ -92,7 +92,7 @@ function Admindashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/allEvents');
+                const response = await axios.get('/allEvents');
                 setEvents(response.data);
                 setFilteredEvents(response.data);
                 setTotalEvents(response.data.length);
@@ -106,7 +106,7 @@ function Admindashboard() {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/allUsers');
+            const response = await axios.get('/allUsers');
             setUsers(response.data);
             setTotalUsers(response.data.length);
         } catch (error) {
@@ -144,7 +144,7 @@ function Admindashboard() {
     };
     const handleDelete = async (userId) => {
         try {
-            await axios.delete("http://localhost:8000/deleteAccount", { data: { userId } });
+            await axios.delete("/deleteAccount", { data: { userId } });
             await fetchUsers();
         } catch (error) {
             console.log("Error Deleting the user account", error);
@@ -153,7 +153,7 @@ function Admindashboard() {
     useEffect(() => {
         const fetchRegister = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/allRegistrations');
+                const response = await axios.get('/allRegistrations');
                 setRegister(response.data);
                 setTotalRegisters(response.data.length);
             } catch (error) {

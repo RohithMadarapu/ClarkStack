@@ -18,9 +18,11 @@ import { useDispatch } from 'react-redux';
 import { autoLogin } from '../slices/userSlice';
 import { useEffect } from 'react';
 
-axios.defaults.baseURL = 'http://localhost:8000';
+const backendURL=import.meta.env.VITE_backend_url;
+console.log(backendURL);
+axios.defaults.baseURL = backendURL;
 axios.defaults.withCredentials = true;
-
+ 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);

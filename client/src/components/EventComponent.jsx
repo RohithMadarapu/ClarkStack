@@ -21,7 +21,8 @@ import health from '../../public/health-events.jpg';
 import innovation from '../../public/innovation-events.jpg';
 import social from '../../public/social-events.jpg';
 import sports from '../../public/sports-events.jpg';
-const socket = io.connect("http://localhost:8000");
+const backendURL=import.meta.env.VITE_backend_url;
+const socket = io.connect(backendURL);
 import NotificationBadge from 'react-notification-badge';
 import { Effect } from 'react-notification-badge';
 import Badge from '@mui/material/Badge';
@@ -41,12 +42,12 @@ function ChatBox({ onClose, event, id, register }) {
     useEffect(() => {
         const fetchChatData = async () => {
             try {
-                const chatResponse = await axios.get(`http://localhost:8000/chats/${id}`);
+                const chatResponse = await axios.get(`/chats/${id}`);
 
                 setMessage(chatResponse.data);
 
                 const senderIds = new Set(chatResponse.data.map(message => message.senderId));
-                const usernamesResponse = await axios.post('http://127.0.0.1:8000/userName', { senderIds: [...senderIds] });
+                const usernamesResponse = await axios.post('/userName', { senderIds: [...senderIds] });
                 setUsernames(usernamesResponse.data);
             } catch (error) {
                 console.error('Error fetching messages:', error);
@@ -62,7 +63,7 @@ function ChatBox({ onClose, event, id, register }) {
             return;
         }
         try {
-            const response = await axios.post('http://127.0.0.1:8000/updateChats', data);
+            const response = await axios.post('/updateChats', data);
             setData({ ...data, content: "" });
             if (response.data.error) {
                 toast.error(response.data.error);
@@ -88,7 +89,7 @@ function ChatBox({ onClose, event, id, register }) {
         const handleReceiveMessage = async (data) => {
             setMessage((list) => [...list, { senderId: data.senderId, content: data.content, timestamp: data.timestamp }]);
             console.log(`Received message from ${data.senderId}: ${data.content}`);
-            const newUsernameResponse = await axios.post('http://127.0.0.1:8000/userName', { senderIds: [data.senderId] });
+            const newUsernameResponse = await axios.post('/userName', { senderIds: [data.senderId] });
             setUsernames((prevUsernames) => ({ ...prevUsernames, ...newUsernameResponse.data }));
         };
 
@@ -150,7 +151,7 @@ function EventComponent({ event, event_id }) {
     useEffect(() => {
         const checkRegistration = async () => {
             try {
-                const response = await axios.post('http://localhost:8000/checkRegister', {
+                const response = await axios.post('/checkRegister', {
                     eventId: event_id,
                     userId: user.userId,
                 });
@@ -227,7 +228,7 @@ function EventComponent({ event, event_id }) {
         try {
             const requestData = { eventId, userId: user.userId };
             console.log('Request Data:', requestData);
-            const response = await axios.post('http://localhost:8000/registerUser', requestData);
+            const response = await axios.post('/registerUser', requestData);
             if (response.data.success) {
                 console.log('Registration successful');
                 setCount((prevCount) => prevCount - 1);

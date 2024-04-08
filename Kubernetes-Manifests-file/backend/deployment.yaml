@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: backend
+   namespace: estack
+spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       role: backend
+   strategy:
+     type: RollingUpdate
+     rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 25%
+   template:
+     metadata:
+       labels:
+         role: backend
+     spec:
+       containers:
+       - name: backend
+         image: edhala12345/estack-server:latest
+         imagePullPolicy: Always
+         env:
+            - name: frontend_url
+              value: "http://frontend:5173"
+            - name: MONGO_URL
+              value: mongodb://admin:admin@mongodb-svc:27017/
+            - name: ACCESS_TOKEN
+              value: karthik123
+         ports:
+         - containerPort: 8000
+           protocol: TCP
+

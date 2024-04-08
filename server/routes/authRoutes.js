@@ -23,8 +23,7 @@ async function cookieJwtAuth(req, res, next) {
 
 // middleware
 const corsOptions = {
-    origin: 'http://localhost:5173', // frontend's URL
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: process.env.frontend_url, // frontend's URL methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // If you need to send cookies or authentication headers
     optionsSuccessStatus: 204, // Some legacy browsers (IE11) choke on 204
 };

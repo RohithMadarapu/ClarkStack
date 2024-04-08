@@ -103,7 +103,7 @@ function Profile() {
             let response;
 
             if (accountDelete) {
-                response = await axios.delete("http://localhost:8000/deleteAccount", { data: { userId } });
+                response = await axios.delete("/deleteAccount", { data: { userId } });
 
                 if (response.data.error) {
                     toast.error(response.data.error);
@@ -113,7 +113,7 @@ function Profile() {
                     navigate("/login");
                 }
             } else {
-                response = await axios.post("http://localhost:8000/profile", requestData, {
+                response = await axios.post("/profile", requestData, {
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -136,7 +136,7 @@ function Profile() {
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/getProfile/${userId}`);
+                const response = await axios.get(`/getProfile/${userId}`);
                 if (response.data) {
                     setProfileData(response.data);
                 }
