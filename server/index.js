@@ -16,7 +16,7 @@ const server = http.createServer(app); // Create an http.Server instance
 
 const io = new Server(server, { // Pass the http.Server instance to Socket.IO
     cors: {
-        origin: process.env.frontend_url,
+        origin: "*",
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     },
 });

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
    name: backend
-   namespace: estack
+   #namespace: estack
 spec:
    replicas: 1
    selector:
@@ -24,7 +24,7 @@ spec:
          imagePullPolicy: Always
          env:
             - name: frontend_url
-              value: "http://frontend:5173"
+              value: http://frontend:5173
             - name: MONGO_URL
               value: mongodb://admin:admin@mongodb-svc:27017/
             - name: ACCESS_TOKEN

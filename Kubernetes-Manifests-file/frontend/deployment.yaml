@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
    name: frontend
-   namespace: estack
+   #namespace: estack
 spec:
    replicas: 1
    selector:
@@ -24,7 +24,9 @@ spec:
          imagePullPolicy: Always
          env:
             - name: VITE_backend_url
-              value: "http://backend:8000"
+              value: http://backend:8000
+            - name: GET_HOSTS_FROM
+              value: dns 
          ports:
          - containerPort: 5173
            protocol: TCP
