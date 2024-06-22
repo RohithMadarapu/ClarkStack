@@ -1,28 +1,28 @@
-version: '3.1'
+version: '3.8'
 
 services: 
-  client:
+  frontend:
+    container_name: frontendContainer
     build: 
       context: ./client
     ports:
       - "5173:5173"
-    environment:
-      - VITE_backend_url=http://localhost:8000 
+    env_file:
+      - ./client/.env
     depends_on:
-      - server
+      - backend
     restart: always
     networks:
       - EStack  
 
-  server:
+  backend:
+    container_name: backendContainer
     build: 
       context: ./server
     ports:
       - "8000:8000"
-    environment:
-      - MONGO_URL=mongodb://admin:admin@mongo:27017/
-      - frontend_url=http://localhost:5173
-      - ACCESS_TOKEN=karthik123
+    env_file:
+      - ./server/.env
     depends_on:
       - mongo
     restart: always  
@@ -30,6 +30,7 @@ services:
       - EStack
 
   mongo:
+    container_name: mongoContainer
     image: mongo
     restart: always
     ports:

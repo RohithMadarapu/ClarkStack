@@ -1,10 +1,21 @@
-From node:14
+FROM node:21 as frontend-builder
 
-WORKDIR /usr/src/app
-COPY package*.json ./
+WORKDIR /app
 
-RUN npm install
+COPY packag*.json ./
+
+RUN npm install --force
+
 COPY . .
 
+FROM node:alpine
 
-CMD ["npm","run","dev"]
+WORKDIR /app
+
+COPY --from=frontend-builder /app .
+
+COPY .env .env.local
+
+EXPOSE 5173:5173
+
+CMD ["npm","run","dev","--","--host"]
