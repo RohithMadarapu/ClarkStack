@@ -42,11 +42,14 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
+        console.log('Received registration request for:', email); // Add logging
+
         // Validate username
         if (!(await isUsernameValid(name))) {
             return res.json({ error: 'Username is invalid' });
         }
 
+        console.log('Username is valid'); // Add logging
 
         // Check if password meets complexity requirements
         if (!isStrongPassword(password)) {
@@ -55,6 +58,7 @@ const registerUser = async (req, res) => {
             });
         }
 
+        console.log('Password is strong'); // Add logging
 
         // Check if email is in a valid format
         if (!isValidEmail(email)) {
@@ -62,6 +66,8 @@ const registerUser = async (req, res) => {
                 error: "Invalid email format"
             });
         }
+
+        console.log('Email format is valid'); // Add logging
 
         // Check if email is already taken
         const exist = await User.findOne({ email });
@@ -71,23 +77,31 @@ const registerUser = async (req, res) => {
             });
         }
 
+        console.log('Email is not taken'); // Add logging
+
         const defaultRole = adminMails.includes(email) ? 'admin' : 'user';
         // Hash password for user security
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        console.log('Hashed password'); // Add logging
 
         // Create a new user
         const user = await User.create({
             name, email, password: hashedPassword, role: defaultRole
         });
 
+        console.log('User created:', user); // Add logging
+
         return res.json(user);
     } catch (error) {
-        console.error(error);
+        console.error('Error during registration:', error); // Log the error
+
         return res.status(500).json({
             error: "Internal server error"
         });
     }
 };
+
 
 
 const getUserProfile = async (req, res) => {
