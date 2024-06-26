@@ -42,71 +42,48 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        console.log('Request Body:', req.body);
-
         // Validate username
         if (!(await isUsernameValid(name))) {
-            console.error('Invalid Username:', name);
-            return res.status(400).json({ error: 'Username is invalid' });
+            return res.json({ error: 'Username is invalid' });
         }
+
 
         // Check if password meets complexity requirements
         if (!isStrongPassword(password)) {
-            console.error('Weak Password:', password);
-            return res.status(400).json({
+            return res.json({
                 error: "Password should be at least 8 characters long and include lowercase, uppercase, numbers, and special characters."
             });
         }
 
+
         // Check if email is in a valid format
         if (!isValidEmail(email)) {
-            console.error('Invalid Email:', email);
-            return res.status(400).json({
+            return res.json({
                 error: "Invalid email format"
             });
         }
 
-        let exist;
-        try {
-            // Check if email is already taken
-            exist = await User.findOne({ email });
-        } catch (error) {
-            console.error('Error finding user:', error);
-            return res.status(500).json({ error: "Error checking email in the database" });
-        }
-
+        // Check if email is already taken
+        const exist = await User.findOne({ email });
         if (exist) {
-            console.error('Email Already Taken:', email);
-            return res.status(400).json({
+            return res.json({
                 error: "Email is already taken"
             });
         }
 
         const defaultRole = adminMails.includes(email) ? 'admin' : 'user';
+        console.log("Working upto here");
+        // Hash password for user security
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        let hashedPassword;
-        try {
-            // Hash password for user security
-            hashedPassword = await bcrypt.hash(password, 10);
-        } catch (error) {
-            console.error('Error hashing password:', error);
-            return res.status(500).json({ error: "Error hashing password" });
-        }
+        // Create a new user
+        const user = await User.create({
+            name, email, password: hashedPassword, role: defaultRole
+        });
 
-        let user;
-        try {
-            // Create a new user
-            user = await User.create({
-                name, email, password: hashedPassword, role: defaultRole
-            });
-        } catch (error) {
-            console.error('Error creating user:', error);
-            return res.status(500).json({ error: "Error creating user in the database" });
-        }
-
-        return res.status(201).json(user);
+        return res.json(user);
     } catch (error) {
-        console.error('General Error in registerUser:', error);
+        console.error(error);
         return res.status(500).json({
             error: "Internal server error"
         });
