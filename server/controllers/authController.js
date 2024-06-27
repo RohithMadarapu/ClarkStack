@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const Profile = require("../models/profile");
 const ChatModel = require("../models/eventChat");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 require('dotenv').config();
 
