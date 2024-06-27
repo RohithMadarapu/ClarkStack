@@ -75,7 +75,7 @@ const registerUser = async (req, res) => {
         console.log("Working upto here");
         // Hash password for user security
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        console.log(hashedPassword);
         // Create a new user
         const user = await User.create({
             name, email, password: hashedPassword, role: defaultRole
