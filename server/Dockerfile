@@ -9,8 +9,6 @@ RUN npm install --force
 
 COPY . .
 
-# Add --trace-deprecation to node command
-CMD ["node", "--trace-deprecation", "index.js"]
 
 # Stage 2: Final Node Alpine Image
 FROM node:alpine
