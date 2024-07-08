@@ -41,9 +41,39 @@ pipeline {
             }
         }
         
-        stage("Deploy the application using the docker-compose") {
+        stage("Build the docker images") {
             steps {
-                sh "docker-compose down && docker-compose up -d --build"
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/'){
+                    //Building the docker images
+                    sh 'docker build -t edhala12345/estack-client:latest -f client/Dockerfile client/'
+                    sh 'docker build -t edhala12345/estack-backend:latest -f server/Dockerfile server/'
+                            
+                    // Push Docker images to Docker Hub
+                    sh 'docker push edhala12345/estack-client:latest'
+                    sh 'docker push edhala12345/estack-backend:latest'
+                }
+            }
+        }
+        
+        stage("Deploying the application in the kubernetes") {
+            steps {       
+                  script {
+                    // Defining the list of Kubernetes manifest files
+                    def manifests = [
+                        "Kubernetes-Manifests-file/persistentVolume.yaml",
+                        "Kubernetes-Manifests-file/persistentVolumeClaim.yaml",
+                        "Kubernetes-Manifests-file/frontend.yaml",
+                        "Kubernetes-Manifests-file/backend.yaml",
+                        "Kubernetes-Manifests-file/mongodb.yaml"
+                    ]
+                    
+                    // Apply each manifest file
+                    withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s-token', namespace: 'estack', serverUrl: 'https://172.31.7.32:6443']]) {
+                        for (manifest in manifests) {
+                            sh "kubectl apply -f ${manifest}"
+                        }
+                    }
+                }
             }
         }
         
