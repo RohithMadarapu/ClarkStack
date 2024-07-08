@@ -21,7 +21,7 @@ async function cookieJwtAuth(req, res, next) {
     }
 }
 
-// middleware
+//middleware 
 const corsOptions = {
     origin: process.env.frontend_url, // frontend's URL methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // If you need to send cookies or authentication headers
