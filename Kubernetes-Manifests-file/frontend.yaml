@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: edhala12345/estack-frontend:latest
+          image: edhala12345/estack-client:latest
           ports:
             - containerPort: 5173
 ---
