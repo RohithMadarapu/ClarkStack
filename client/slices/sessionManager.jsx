@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { logout } from './userSlice';
 import { useDispatch } from 'react-redux';
